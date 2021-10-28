@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import { App } from './App'
 import { AuthProvider } from './contexts/auth.context'
 
-import './styles/global.css'
+import './styles/global.scss'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,5 +12,5 @@ ReactDOM.render(
       <App />
     </AuthProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 )

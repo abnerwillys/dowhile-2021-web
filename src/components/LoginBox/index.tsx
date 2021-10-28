@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { VscGithubInverted } from 'react-icons/vsc'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
@@ -17,4 +16,3 @@ export function LoginBox() {
     </div>
   )
 }
-

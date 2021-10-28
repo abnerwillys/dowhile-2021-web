@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { FormEvent, useState } from 'react'
 import { VscGithubInverted, VscSignOut } from 'react-icons/vsc'
+
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { api } from '../../services/api'
 
@@ -23,7 +25,7 @@ export function SendMessageForm() {
 
   return (
     <div className={styles.sendMessageFormWrapper}>
-      <button onClick={signOut} className={styles.signOutButton}>
+      <button type="button" onClick={signOut} className={styles.signOutButton}>
         <VscSignOut size="32" />
       </button>
 
@@ -43,9 +45,9 @@ export function SendMessageForm() {
       <form onSubmit={handleSendMessage} className={styles.sendMessageForm}>
         <label htmlFor="message">Mensagem</label>
 
-        <textarea 
-          name="message" 
-          id="message" 
+        <textarea
+          name="message"
+          id="message"
           placeholder="Qual sua expectativa para o evento?"
           value={message}
           onChange={event => setMessage(event.target.value)}
@@ -56,4 +58,3 @@ export function SendMessageForm() {
     </div>
   )
 }
-

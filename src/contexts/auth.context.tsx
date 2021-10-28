@@ -1,14 +1,14 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
-import { api } from "../services/api";
+import { createContext, ReactNode, useEffect, useState } from 'react'
+import { api } from '../services/api'
 
 type User = {
-  id: string;
-  name: string;
-  login: string;
+  id: string
+  name: string
+  login: string
   avatar_url: string
 }
 
-type AuthContextData= {
+type AuthContextData = {
   user: User | null
   signInUrl: string
   signOut: () => void
@@ -21,16 +21,16 @@ type AuthProviderProps = {
 }
 
 type AuthResponse = {
-  token: string;
+  token: string
   user: {
-    id: string;
+    id: string
     avatar_url: string
-    name: string;
-    login: string;
+    name: string
+    login: string
   }
 }
 
-export function AuthProvider(props: AuthProviderProps) {
+export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null)
 
   const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=f9b3457ee095faa9b118`
@@ -40,13 +40,13 @@ export function AuthProvider(props: AuthProviderProps) {
       code: githubCode,
     })
 
-    const { token, user } = response.data
+    const { token, user: userRes } = response.data
 
     localStorage.setItem('@dowhile:token', token)
 
     api.defaults.headers.common.authorization = `Bearer ${token}`
 
-    setUser(user)
+    setUser(userRes)
   }
 
   function signOut() {
@@ -79,7 +79,7 @@ export function AuthProvider(props: AuthProviderProps) {
 
   return (
     <AuthContext.Provider value={{ signInUrl, user, signOut }}>
-      {props.children}
+      {children}
     </AuthContext.Provider>
   )
 }

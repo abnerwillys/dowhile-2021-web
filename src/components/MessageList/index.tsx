@@ -1,4 +1,3 @@
-
 import { useMessages } from '../../hooks/useMessages'
 
 import logoImg from '../../assets/logo.svg'
@@ -12,11 +11,9 @@ export function MessageList() {
       <img src={logoImg} alt="teste" />
 
       <ul className={styles.messageList}>
-        { messages.map(message => (
+        {messages.map(message => (
           <li key={message.id} className={styles.message}>
-            <p className={styles.messageContent}>
-              {message.text}
-            </p>
+            <p className={styles.messageContent}>{message.text}</p>
 
             <div className={styles.messageUser}>
               <div className={styles.userImage}>
@@ -31,4 +28,3 @@ export function MessageList() {
     </div>
   )
 }
-
