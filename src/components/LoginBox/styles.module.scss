@@ -37,6 +37,8 @@
       margin-right: 16px;
     }
 
+    transition: filter 200ms;
+
     &:hover {
       filter: brightness(0.9);
     }
